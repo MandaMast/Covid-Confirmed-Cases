@@ -1,0 +1,41 @@
+<head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["City", "Total Confirmed Cases of COVID-19", { role: "style" } ],
+        ["Los Angeles", 20460, "color: #dd4e4e"],
+        ["Dallas, TX", 3014, "color: #3cd979"],
+        ["NYC", 160489, "color: #ffc400"],
+        ["Philadelphia, PA", 12868, "color: #38d8d8"],
+        ["San Francisco, CA", 1424, "color: #605ae6"],
+        ["Cook, IL -Chicago", 31953, "color: #e883dc"],
+        ["Miami, FL", 11570, "color: #e38f2c"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Confirmed Cases of COVID-19 in major cities across the U.S. as of April 28, 2020",
+        width: 800,
+        height: 600,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+</head>
+<body>
+  <div id="myBarChart"/>
+</body>

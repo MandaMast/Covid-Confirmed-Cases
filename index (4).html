@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Total Deaths'],
+          ['United States', 58824],
+          ['Italy', 27359],
+          ['Spain', 23822],
+          ['France', 23327],
+          ['United Kingdom', 21745],
+          ['Belgium', 7331],
+          ['Germany', 6192],
+          ['Iran', 5877],
+          ['Netherlands', 4582],
+          ['Canada', 2766],
+          ['Sweden', 2355],
+          ['India', 1008]
+        ]);
+
+        var options = {
+          title: 'Top COVID-19 Deaths by Country'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
